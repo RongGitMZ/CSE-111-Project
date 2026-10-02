@@ -39,18 +39,13 @@ CREATE TABLE sales(
     s_clerk char(15) NOT NULL,
     s_comment varchar(79) NOT NULL
 );
-CREATE TABLE membership(
-    m_membershipkey decimal(2,0) NOT NULL,
-    m_name char(25) NOT NULL,
-    m_discount decimal(3,2) NOT NULL,
-    m_comment varchar(152)
-);
-CREATE TABLE foodcourtsupp(
-    fs_foodcourtkey decimal(2,0) NOT NULL,
-    fs_suppkey decimal(8,0) NOT NULL,
-    fs_availqty decimal(5,0) NOT NULL,
-    fs_suppcost decimal(6,2) NOT NULL,
-    fs_comment varchar(199) NOT NULL
+CREATE TABLE saleitems(
+    si_orderkey decimal(12,0) NOT NULL,
+    si_prodkey decimal(10,0) NOT NULL,
+    si_suppkey decimal(8,0) NOT NULL,
+    si_quantity decimal(5,0) NOT NULL,
+    si_extendedprice decimal(8,2) NOT NULL,
+    si_comment varchar(199) NOT NULL
 );
 CREATE TABLE supplier(
     s_suppkey decimal(8,0) NOT NULL,
