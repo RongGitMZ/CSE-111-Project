@@ -1,11 +1,11 @@
 PRAGMA foreign_keys = ON; -- enables foreign key in sqlite
 
-CREATE TABLE wlocation(
-    w_wlocationkey decimal(2,0) NOT NULL,
-    w_name char(25) NOT NULL,
+CREATE TABLE warehouse(
+    w_warehousekey decimal(2,0) NOT NULL,
+    w_address char(25) NOT NULL,
     w_comment varchar(152),
 
-    PRIMARY KEY (w_wlocationkey)
+    PRIMARY KEY (w_warehousekey)
 );
 
 CREATE TABLE product(
@@ -98,14 +98,14 @@ CREATE TABLE productsupply(
 -- Junction table for PRODUCT and WLOCATION.
 CREATE TABLE productstock(
     st_prodkey decimal(10,0) NOT NULL,
-    st_wlocationkey decimal(2,0) NOT NULL,
+    st_warehousekey decimal(2,0) NOT NULL,
 
     -- Quantity stored at the warehouse
     st_quantity INTEGER NOT NULL DEFAULT 0
         CHECK (st_quantity >= 0),
 
     -- Each product/warehouse combination must be unique
-    PRIMARY KEY (st_prodkey, st_wlocationkey),
+    PRIMARY KEY (st_prodkey, st_warehousekey),
 
     FOREIGN KEY (st_prodkey)
         REFERENCES product(p_partkey)
