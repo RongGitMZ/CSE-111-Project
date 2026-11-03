@@ -112,8 +112,8 @@ CREATE TABLE productstock(
         ON DELETE CASCADE
         ON UPDATE CASCADE,
 
-    FOREIGN KEY (st_wlocationkey)
-        REFERENCES wlocation(w_wlocationkey)
+    FOREIGN KEY (st_warehousekey)
+        REFERENCES warehouse(w_warehousekey)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -122,7 +122,7 @@ CREATE TABLE productstock(
 CREATE TABLE sales(
     s_orderkey decimal(12,0) NOT NULL,
     s_custkey decimal(9,0) NOT NULL,
-    s_wlocationkey decimal(2,0) NOT NULL,
+    s_warehousekey decimal(2,0) NOT NULL,
 
     -- DEFAULT marks new orders as Pending (P).
     s_orderstatus char(1) NOT NULL DEFAULT 'P',
@@ -141,8 +141,8 @@ CREATE TABLE sales(
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
 
-    FOREIGN KEY (s_wlocationkey)
-        REFERENCES wlocation(w_wlocationkey)
+    FOREIGN KEY (s_warehousekey)
+        REFERENCES warehouse(w_warehousekey)
          -- Prevent deleting warehouses with existing sales.
         ON DELETE RESTRICT
         ON UPDATE CASCADE
